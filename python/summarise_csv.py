@@ -1,6 +1,15 @@
+import os
 import csv
 import sys
 from pathlib import Path
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+)
+
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
 
 
 def is_number(value: str) -> bool:
@@ -61,8 +70,8 @@ def main():
     out_path = csv_path.with_suffix(".report.txt")
     out_path.write_text(report, encoding="utf-8")
 
-    print(report)
-    print(f"Report written to: {out_path}")
+    logging.info("\n" + report)
+    logging.info("Report written to: %s", out_path)
 
 
 if __name__ == "__main__":
