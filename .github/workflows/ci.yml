@@ -27,3 +27,7 @@ jobs:
         run: |
           pytest -q
 
+      - name: Build Docker image
+        run: |
+          docker build -t learning-lab:ci .
+
