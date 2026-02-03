@@ -1,0 +1,13 @@
+File: sample.csv
+Rows: 4
+Columns: 3
+
+Numeric column summary (min / max / avg):
+- age: 0.00 / 40.00 / 19.75
+- score: 88.00 / 100.00 / 94.50
+
+Preview (first 5 rows):
+1. {'name': 'Jesal', 'age': '39', 'score': '88'}
+2. {'name': 'Poonam', 'age': '40', 'score': '91'}
+3. {'name': 'Riaan', 'age': '0', 'score': '100'}
+4. {'name': 'Amiah', 'age': '0', 'score': '99'}
