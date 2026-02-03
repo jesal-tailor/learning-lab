@@ -16,6 +16,6 @@ COPY src /app/src
 COPY pytest.ini /app/pytest.ini
 
 # Default command (can be overridden)
-CMD ["sh", "-c", "python -m uvicorn learning_lab.api:app --host 0.0.0.0 --port ${PORT:-8000}"]
+CMD ["sh", "-c", "python -m uvicorn learning_lab.api:app --app-dir /app/src --host 0.0.0.0 --port ${PORT:-8000}"]
 
 
