@@ -16,5 +16,6 @@ COPY src /app/src
 COPY pytest.ini /app/pytest.ini
 
 # Default command (can be overridden)
-CMD ["python", "src/learning_lab/summarise_csv.py", "--help"]
+CMD ["sh", "-c", "python -m uvicorn learning_lab.api:app --host 0.0.0.0 --port ${PORT:-8000}"]
+
 
