@@ -44,6 +44,9 @@ def health():
 def ready():
     return {"status": "ready"}
 
+@app.get("/version")
+def version():
+    return {"version": os.getenv("RENDER_GIT_COMMIT", "unknown")}
 
 @app.post("/summarise")
 async def summarise(file: UploadFile = File(...)):
