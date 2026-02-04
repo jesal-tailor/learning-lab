@@ -16,3 +16,4 @@ python src/learning_lab/summarise_csv.py path/to/file.csv
 - Health: https://learning-lab-api.onrender.com/health
 - Ready: https://learning-lab-api.onrender.com/ready
 - Docs: https://learning-lab-api.onrender.com/docs
+- Version: https://learning-lab-api.onrender.com/version
