@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learning-lab-api-canary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: learning-lab-api
+      track: canary
+  template:
+    metadata:
+      labels:
+        app: learning-lab-api
+        track: canary
+    spec:
+      imagePullSecrets:
+        - name: ghcr-pull
+      containers:
+        - name: api
+          image: ghcr.io/jesal-tailor/learning-lab-api:sha-5afd2d6ecbf14882b92fea1dea90760827a20abc
+          imagePullPolicy: Always
+          env:
+            - name: MODEL_VERSION
+              value: "1.0.1"
+          ports:
+            - containerPort: 8000
