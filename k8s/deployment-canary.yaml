@@ -18,7 +18,7 @@ spec:
         - name: ghcr-pull
       containers:
         - name: api
-          image: ghcr.io/jesal-tailor/learning-lab-api:sha-5afd2d6ecbf14882b92fea1dea90760827a20abc
+          image: ghcr.io/jesal-tailor/learning-lab-api:sha-7fea619d3e0da886bd719f03492bccdaf71af2a6
           imagePullPolicy: Always
           env:
             - name: MODEL_VERSION
