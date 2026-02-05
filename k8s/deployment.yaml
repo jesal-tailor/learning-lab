@@ -16,7 +16,7 @@ spec:
         - name: ghcr-pull
       containers:
         - name: api
-          image: ghcr.io/jesal-tailor/learning-lab-api:sha-0a25faa715485ccb1bdf4b40b7dd6efbff484780
+          image: ghcr.io/jesal-tailor/learning-lab-api:sha-d29816e49d352a0f59b3d625d78bacd9c433e801
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
