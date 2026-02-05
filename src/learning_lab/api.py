@@ -15,7 +15,7 @@ logger = logging.getLogger("learning_lab")
 
 app = FastAPI(title="Learning Lab CSV Summariser")
 
-APP_VERSION = "v1.0.2"
+APP_VERSION = "v1.0.3"
 
 @app.middleware("http")
 async def add_request_id(request: Request, call_next):
@@ -47,7 +47,7 @@ def ready():
 
 @app.get("/version")
 def version():
-    return {"version": os.getenv("RENDER_GIT_COMMIT", "unknown")}
+    return {"version": os.getenv("RENDER_GIT_COMMIT") or APP_VERSION}
 
 @app.post("/summarise")
 async def summarise(file: UploadFile = File(...)):
