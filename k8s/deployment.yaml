@@ -21,6 +21,8 @@ spec:
           ports:
             - containerPort: 8000
           env:
+            - name: MODEL_VERSION
+              value: "1.0.1"
             - name: PORT
               value: "8000"
             - name: LOG_LEVEL
