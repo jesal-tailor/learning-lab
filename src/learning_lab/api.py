@@ -3,10 +3,11 @@ import os
 import uuid
 import tempfile
 from pathlib import Path
-
 from fastapi import FastAPI, UploadFile, File, HTTPException, Request
-
 from learning_lab.summarise_csv import summarise_csv
+from pydantic import BaseModel
+from learning_lab.predict import predict
+
 
 # Logging setup
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
@@ -17,6 +18,13 @@ app = FastAPI(title="Learning Lab CSV Summariser")
 
 APP_VERSION = "v1.0.3"
 
+class PredictRequest(BaseModel):
+    features: list[float]
+
+@app.post("/predict")
+def predict_endpoint(req: PredictRequest):
+    return predict(req.features)
+
 @app.middleware("http")
 async def add_request_id(request: Request, call_next):
     request_id = request.headers.get("x-request-id") or str(uuid.uuid4())
@@ -26,7 +34,6 @@ async def add_request_id(request: Request, call_next):
     response.headers["x-request-id"] = request_id
     return response
 
-
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
     response = await call_next(request)
@@ -35,11 +42,9 @@ async def log_requests(request: Request, call_next):
     )
     return response
 
-
 @app.get("/health")
 def health():
     return {"status": "ok"}
-
 
 @app.get("/ready")
 def ready():
