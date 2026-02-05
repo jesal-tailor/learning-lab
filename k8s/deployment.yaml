@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: learning-lab-api
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: learning-lab-api
@@ -12,6 +12,8 @@ spec:
       labels:
         app: learning-lab-api
     spec:
+      imagePullSecrets:
+        - name: ghcr-pull
       containers:
         - name: api
           image: ghcr.io/jesal-tailor/learning-lab-api:v1.0.3
