@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: api
-          image: learning-lab:api
-          imagePullPolicy: IfNotPresent
+          image: ghcr.io/jesal-tailor/learning-lab-api:v1.0.3
+          imagePullPolicy: Always
           ports:
             - containerPort: 8000
           env:
