@@ -15,7 +15,7 @@ logger = logging.getLogger("learning_lab")
 
 app = FastAPI(title="Learning Lab CSV Summariser")
 
-APP_VERSION = "v1.0.1"
+APP_VERSION = "v1.0.2"
 
 @app.middleware("http")
 async def add_request_id(request: Request, call_next):
