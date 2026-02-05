@@ -16,7 +16,7 @@ spec:
         - name: ghcr-pull
       containers:
         - name: api
-          image: ghcr.io/jesal-tailor/learning-lab-api:sha-<COMMIT_SHA>   # Image tag is immutable and tied to git commit
+          image: ghcr.io/jesal-tailor/learning-lab-api:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
