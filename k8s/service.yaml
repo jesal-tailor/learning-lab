@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: learning-lab-api-svc
+spec:
+  selector:
+    app: learning-lab-api
+  ports:
+    - port: 80
+      targetPort: 8000
+
