@@ -12,10 +12,12 @@ spec:
       labels:
         app: learning-lab-api
     spec:
+      imagePullSecrets:
+        - name: ghcr-pull
       containers:
         - name: api
-          image: learning-lab:api
-          imagePullPolicy: IfNotPresent
+          image: ghcr.io/jesal-tailor/learning-lab-api:sha-<COMMIT_SHA>   # Image tag is immutable and tied to git commit
+          imagePullPolicy: Always
           ports:
             - containerPort: 8000
           env:
