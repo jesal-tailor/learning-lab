@@ -1,0 +1,6 @@
+{
+  "model_name": "baseline-linear",
+  "model_version": "1.0.1",
+  "coef": [0.7, 1.5],
+  "intercept": 0.2
+}

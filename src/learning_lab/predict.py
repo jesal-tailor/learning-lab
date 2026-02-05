@@ -1,19 +1,26 @@
+import os
 import json
 from pathlib import Path
 from typing import Dict, List
 
 MODEL_PATH = Path(__file__).parent / "models" / "model_v1.json"
 
+MODEL_VERSION = os.getenv("MODEL_VERSION", "1.0.0")
+
+MODEL_MAP = {
+    "1.0.0": "model_v1.json",
+    "1.0.1": "model_v1_1.json",
+}
+
 def load_model() -> Dict:
-    return json.loads(MODEL_PATH.read_text())
+    model_file = MODEL_MAP[MODEL_VERSION]
+    path = Path(__file__).parent / "models" / model_file
+    return json.loads(path.read_text())
 
 def predict(features: List[float]) -> Dict:
     model = load_model()
     coef = model["coef"]
     intercept = model["intercept"]
-
-    if len(features) != len(coef):
-        raise ValueError(f"Expected {len(coef)} features, got {len(features)}")
 
     y = sum(f * c for f, c in zip(features, coef)) + intercept
     return {
